@@ -64,7 +64,13 @@ public class Users extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        request.setAttribute("activePage", "Users");
+        
+        List<UserDetails> users = userBean.getAllUsers();
+        request.setAttribute("Users", users);
+
+        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
     }
 
     /**
@@ -78,13 +84,8 @@ public class Users extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        request.setAttribute("activePage", "Users");
+        processRequest(request, response);
         
-        List<UserDetails> cars = userBean.getAllUsers();
-        request.setAttribute("users", users);
-
-        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
     }
 
     /**

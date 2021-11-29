@@ -31,6 +31,30 @@ public class CarDetails implements Serializable{
     public String getLicensePlate() {
         return licensePlate;
     }
+
+    public String getParkingSpot() {
+        return parkingSpot;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public void setParkingSpot(String parkingSpot) {
+        this.parkingSpot = parkingSpot;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
     
     
 }
