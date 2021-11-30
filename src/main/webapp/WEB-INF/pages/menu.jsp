@@ -19,15 +19,16 @@
                 <li class="nav-item ${activePage eq 'About' ? 'active' : ''}">
                     <a class="nav-link" href="${pageContext.request.contextPath}/About">About</a>
                 </li>
-                <li class="nav-item ${activePage eq 'Cars' ? 'active' : ''}">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/Cars">Cars</a>
-                </li>
-                <li class="nav-item ${activePage eq 'Users' ? 'active' : ''}">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/Users">Users</a>
-                </li>
-                <li class="nav-item ${activePage eq 'Add' ? 'active' : ''}">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/Add">Add Car</a>
-                </li>
+                <c:if test="${pageContext.request.isUserInRole('AdminRole')}">
+                    <li class="nav-item ${activePage eq 'Cars' ? 'active' : ''}">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Cars">Cars</a>
+                    </li>
+                </c:if>
+                <c:if test="${pageContext.request.isUserInRole('ClientRole')}">
+                    <li class="nav-item ${activePage eq 'Users' ? 'active' : ''}">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Users">Users</a>
+                    </li>
+                </c:if>
                 <li class="nav-item">
                     <a class="nav-link disabled">Disabled</a>
                 </li>
