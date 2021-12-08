@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item ${activePage eq 'About' ? 'active' : ''}">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/About">About</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/about.jsp">About</a>
                 </li>
                 <c:if test="${pageContext.request.isUserInRole('AdminRole')}">
                     <li class="nav-item ${activePage eq 'Cars' ? 'active' : ''}">

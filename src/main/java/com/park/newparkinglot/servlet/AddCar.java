@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author radvo
  */
-@WebServlet(name = "Addcar", urlPatterns = {"/Addcar"})
+@WebServlet(name = "AddCar", urlPatterns = {"/AddCar"})
 public class AddCar extends HttpServlet {
     @Inject
     UserBean userBean;
@@ -70,7 +70,7 @@ public class AddCar extends HttpServlet {
         //processRequest(request, response);
         List<UserDetails> users = userBean.getAllUsers();
         request.setAttribute("users",users);
-        request.getRequestDispatcher("/WEB-INF/pages/addCar.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/add.jsp").forward(request, response);
     }
 
     /**
