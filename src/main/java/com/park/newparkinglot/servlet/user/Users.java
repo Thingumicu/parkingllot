@@ -36,7 +36,7 @@ public class Users extends HttpServlet {
         List<UserDetails> users = userBean.getAllUsers();
         request.setAttribute("users", users);
 
-        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/user/users.jsp").forward(request, response);
     }
 
     @Override

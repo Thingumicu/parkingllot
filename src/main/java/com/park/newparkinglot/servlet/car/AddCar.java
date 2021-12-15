@@ -38,7 +38,7 @@ public class AddCar extends HttpServlet {
 
         List<UserDetails> users = userBean.getAllUsers();
         request.setAttribute("users", users);
-        request.getRequestDispatcher("/WEB-INF/pages/add.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/car/add.jsp").forward(request, response);
     }
 
     @Override

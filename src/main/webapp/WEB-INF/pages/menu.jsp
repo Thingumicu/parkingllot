@@ -29,9 +29,6 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/Users">Users</a>
                     </li>
                 </c:if>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
             </ul>
             <ul class="navbar-nav d-flex">
                 <li class="nav-item">

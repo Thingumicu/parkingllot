@@ -46,7 +46,7 @@ public class Cars extends HttpServlet {
         List<CarDetails> cars = carBean.getAllCars();
         request.setAttribute("cars", cars);
 
-        request.getRequestDispatcher("/WEB-INF/pages/cars.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/car/cars.jsp").forward(request, response);
     }
 
     @Override
