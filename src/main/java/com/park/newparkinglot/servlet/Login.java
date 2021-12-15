@@ -28,12 +28,13 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.setAttribute("message", "Username or password incorrect");
+        request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
     }
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Login v1.0";
     }
 
 }

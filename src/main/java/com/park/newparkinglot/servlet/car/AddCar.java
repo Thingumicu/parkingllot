@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.park.newparkinglot.servlet;
+package com.park.newparkinglot.servlet.car;
 
 import com.newparkinglot.ejb.CarBean;
 import com.newparkinglot.ejb.UserBean;
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author radvo
  */
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole"}))
-@WebServlet(name = "AddCar", urlPatterns = {"/AddCar"})
+@WebServlet(name = "AddCar", urlPatterns = {"/Cars/Create"})
 public class AddCar extends HttpServlet {
 
     @Inject
@@ -56,7 +56,7 @@ public class AddCar extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "AddCar v1.0";
     }
 
 }

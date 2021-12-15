@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.park.newparkinglot.servlet;
+package com.park.newparkinglot.servlet.user;
 
 import com.newparkinglot.ejb.UserBean;
-import com.newparkinglot.util.PasswordUtil;
+import com.park.newparkinglot.common.UserDetails;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
@@ -21,38 +21,33 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author radvo
  */
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole"}))
-@WebServlet(name = "AddUser", urlPatterns = {"/AddUser"})
-public class AddUser extends HttpServlet {
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ClientRole"}))
+@WebServlet(name = "Users", urlPatterns = {"/Users"})
+public class Users extends HttpServlet {
 
     @Inject
-    UserBean userBean;
+    private UserBean userBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setAttribute("activePage", "Users");
 
-        request.getRequestDispatcher("/WEB-INF/pages/addUser.jsp").forward(request, response);
+        List<UserDetails> users = userBean.getAllUsers();
+        request.setAttribute("users", users);
+
+        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String position = request.getParameter("position");
-
-        String passwordSha256 = PasswordUtil.convertToSha256(password);
-        userBean.createUser(username, email, passwordSha256, position);
-
-        response.sendRedirect(request.getContextPath() + "/Users");
     }
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Users v1.0";
     }
 
 }
