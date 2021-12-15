@@ -4,13 +4,10 @@
  */
 package com.park.newparkinglot.servlet;
 
-import com.newparkinglot.ejb.CarBean;
 import com.newparkinglot.ejb.UserBean;
-import com.park.newparkinglot.common.CarDetails;
-import com.park.newparkinglot.common.UserDetails;
+import com.newparkinglot.util.PasswordUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
@@ -25,41 +22,32 @@ import javax.servlet.http.HttpServletResponse;
  * @author radvo
  */
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole"}))
-@WebServlet(name = "EditCar", urlPatterns = {"/EditCar"})
-public class EditCar extends HttpServlet {
+@WebServlet(name = "AddUser", urlPatterns = {"/AddUser"})
+public class AddUser extends HttpServlet {
 
     @Inject
     UserBean userBean;
-
-    @Inject
-    CarBean carBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<UserDetails> users = userBean.getAllUsers();
-        request.setAttribute("users", users);
-
-        int carId = Integer.parseInt(request.getParameter("id"));
-        CarDetails car = carBean.findById(carId);
-        request.setAttribute("car", car);
-
-        request.getRequestDispatcher("/WEB-INF/pages/editCar.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/addUser.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String licensePlate = request.getParameter("license_plate");
-        String parkingSpot = request.getParameter("parking_spot");
-        int ownerId = Integer.parseInt(request.getParameter("owner_id"));
-        int carId = Integer.parseInt(request.getParameter("car_id"));
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String position = request.getParameter("position");
 
-        carBean.updateCar(carId, licensePlate, parkingSpot, ownerId);
+        String passwordSha256 = PasswordUtil.convertToSha256(password);
+        userBean.createUser(username, email, passwordSha256, position);
 
-        response.sendRedirect(request.getContextPath() + "/Cars");
+        response.sendRedirect(request.getContextPath() + "/Users");
     }
 
     @Override
