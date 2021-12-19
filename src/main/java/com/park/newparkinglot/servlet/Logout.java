@@ -23,6 +23,7 @@ public class Logout extends HttpServlet {
             throws ServletException, IOException {
 
         request.logout();
+        request.getSession().invalidate();
         response.sendRedirect(request.getContextPath());
     }
 

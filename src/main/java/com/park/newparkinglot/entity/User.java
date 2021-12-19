@@ -11,9 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "USERS")
+@XmlRootElement
 public class User implements Serializable{
 
     private static final long serialVersionUID = 1L;

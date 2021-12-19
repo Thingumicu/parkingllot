@@ -7,6 +7,7 @@ package com.newparkinglot.ejb;
 import com.park.newparkinglot.common.UserDetails;
 import com.park.newparkinglot.entity.User;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.EJBException;
@@ -46,6 +47,14 @@ public class UserBean {
         } catch (Exception ex) {
             throw new EJBException(ex);
         }
+    }
+    
+    public Collection<String> findUsernames(Collection<Integer>userIds){
+        LOG.info("findUsernames");
+        List<String> usernames = (List<String>) em.createQuery("SELECT u.username FROM User u WHERE u.id IN ?l")
+                .setParameter(1, userIds)
+                .getResultList();
+        return usernames;
     }
 
     private List<UserDetails> copyUsersToDetails(List<User> users) {
