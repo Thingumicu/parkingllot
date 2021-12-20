@@ -23,7 +23,10 @@
                     ${car.username}
                 </div>
                 <div class="col-md-2">
-                    <a class="btn btn-secondary btn-sm" href="${pageContext.request.contextPath}/car/editCar?id=${car.id}" role="button">Edit Car</a>
+                    <a class="btn btn-secondary btn-sm" href="${pageContext.request.contextPath}/Cars/AddPhoto?id=${car.id}" role="button">Edit Car</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-secondary btn-sm" href="${pageContext.request.contextPath}/Cars/Update?id=${car.id}" role="button">Edit Car</a>
                 </div>
             </div>
         </c:forEach>
