@@ -6,10 +6,12 @@ package com.park.newparkinglot.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -27,6 +29,8 @@ public class User implements Serializable{
     private String email;
     private String password;
     private String position;
+    @JsonbTransient
+    @OneToMany(mappedBy = "user")
     private Collection<Car> cars;
 
     public Integer getId() {
