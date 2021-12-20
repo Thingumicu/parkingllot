@@ -51,7 +51,7 @@ public class UserBean {
     
     public Collection<String> findUsernames(Collection<Integer>userIds){
         LOG.info("findUsernames");
-        List<String> usernames = (List<String>) em.createQuery("SELECT u.username FROM User u WHERE u.id IN ?l")
+        List<String> usernames = (List<String>) em.createQuery("SELECT u.username FROM User u WHERE u.id IN ?1")
                 .setParameter(1, userIds)
                 .getResultList();
         return usernames;
