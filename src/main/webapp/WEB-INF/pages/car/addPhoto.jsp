@@ -4,7 +4,8 @@
 
 <t:pageTemplate pageTitle="Add Photo">
     <h1>Add Photo</h1>
-    <<form class="needs-validation" novalidate="POST" enctype="multipart/form-data" action="${pageContext.request.contextPath}/Cars/AddPhoto">
+    <form class="needs-validation" novalidate method="POST" enctype="multipart/form-data"  
+           action="${pageContext.request.contextPath}/Cars/AddPhoto">
         <div class="row">
             <div class="col-md-6 mb-3">
                 License plate: ${car.licensePlate}
