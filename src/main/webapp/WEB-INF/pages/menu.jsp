@@ -19,7 +19,7 @@
                 <li class="nav-item ${activePage eq 'About' ? 'active' : ''}">
                     <a class="nav-link" href="${pageContext.request.contextPath}/about.jsp">About</a>
                 </li>
-                <c:if test="${pageContext.request.isUserInRole('AdminRole')}">
+                <c:if test="${pageContext.request.isUserInRole('AdminRole') || pageContext.request.isUserInRole('ClientRole')}">
                     <li class="nav-item ${activePage eq 'Cars' ? 'active' : ''}">
                         <a class="nav-link" href="${pageContext.request.contextPath}/Cars">Cars</a>
                     </li>

@@ -7,7 +7,6 @@ package com.park.newparkinglot.servlet.car;
 import com.newparkinglot.ejb.CarBean;
 import com.park.newparkinglot.common.CarDetails;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.DeclareRoles;
@@ -27,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @DeclareRoles({"AdminRole", "ClientRole"})
 @ServletSecurity(
         value = @HttpConstraint(
-                rolesAllowed = {"AdminRole"}
+                rolesAllowed = {"AdminRole","ClientRole"}
         )
 )
 @WebServlet(name = "Cars", urlPatterns = {"/Cars"})
